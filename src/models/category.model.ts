@@ -1,5 +1,7 @@
 import { uuidv4 } from '../utils/shared.util';
+import csvParser from 'csv-parser';
 import pool from '../config/db';
+import fs from 'fs';
 
 interface Category {
     id: number;
@@ -9,7 +11,7 @@ interface Category {
     svg: Text;
     created_at: Date;
     updated_at: Date;
-    deleted_at: Date;
+    deleted_at: Date | null;
 }
 
 // Obtener todas las categorías
@@ -78,3 +80,37 @@ export const searchSimilarity = async (category: string) => {
     return rows;
 };
 
+// Función para importar categorías desde un archivo CSV
+export const importCategoriesFromCSV = async (filePath: string): Promise<void> => {
+    const categories: Category[] = [];
+  
+    // Lee el archivo CSV
+    fs.createReadStream(filePath)
+      .pipe(csvParser()) // Pasa el contenido al parser CSV
+      .on('data', (row: any) => {
+        // Prepara los datos para insertar en la base de datos
+        const category: Category = {
+          id: 0,
+          uuid: uuidv4(),
+          name: row.name,
+          description: row.description,
+          svg: row.svg,
+          created_at: new Date(),
+          updated_at: new Date(),
+          deleted_at: null,
+        };
+  
+        categories.push(category);
+      })
+      .on('end', async () => {
+        // Al terminar de leer el archivo, inserta las categorías en la base de datos
+        for (const category of categories) {
+          await createCategory(category.name, category.description, category.svg);
+        }
+  
+        console.log('CSV import completed!');
+      })
+      .on('error', (error) => {
+        console.error('Error reading CSV file:', error);
+      });
+  };

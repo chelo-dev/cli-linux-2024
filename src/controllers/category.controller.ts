@@ -1,5 +1,13 @@
-import { Request, Response } from 'express';
-import { getAllCategories, createCategory, updateCategory, deleteCategory, searchSimilarity } from '../models/category.model';
+import { Request, Response, RequestHandler } from 'express';
+import fs from 'fs';
+import { 
+    getAllCategories, 
+    createCategory, 
+    updateCategory, 
+    deleteCategory, 
+    searchSimilarity, 
+    importCategoriesFromCSV 
+} from '../models/category.model';
 
 export const getCategories = async (req: Request, res: Response) => {
     try {
@@ -29,7 +37,7 @@ export const updateCategoryByUuid = async (req: Request, res: Response) => {
         const { uuid } = req.params;
         const { name, description, svg } = req.body;
         await updateCategory(String(uuid), name, description, svg);
-        
+
         res.status(200).json({ error: false, message: req.body });
     } catch (error) {
         if (error instanceof Error) {
@@ -62,5 +70,25 @@ export const getCategory = async (req: Request, res: Response) => {
         } else {
             res.status(500).send({ error: true, message: "Failed to search category" });
         }
+    }
+};
+
+export const importCategories = async (req: Request, res: Response): Promise<void> => {
+    try {
+        if (!req.file) {
+            res.status(400).json({ error: true, message: 'No file uploaded' });
+            return;
+        }
+
+        const filePath = req.file.path;
+
+        await importCategoriesFromCSV(filePath);
+
+        fs.unlinkSync(filePath);
+
+        res.status(200).json({ error: false, message: 'Categories imported successfully' });
+    } catch (error) {
+        console.error('Error importing categories:', error);
+        res.status(500).json({ error: true, message: 'Failed to import categories' });
     }
 };
