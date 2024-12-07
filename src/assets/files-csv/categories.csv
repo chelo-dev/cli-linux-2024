@@ -1,0 +1,28 @@
+name,description,svg
+"Actualizador de paquetes APT (Debian, Ubuntu y derivados)","Gestor para instalar, actualizar y eliminar paquetes en sistemas Debian y Ubuntu.",cpu.svg
+"Actualizador de paquetes YUM (Red Hat,  Fedora y similares)",Herramienta para manejar paquetes en sistemas basados en Red Hat como Fedora.,cpu.svg
+Análisis del sistema de ficheros,Comandos para verificar y reparar errores en sistemas de archivos.,archive.svg
+Apagar (Reiniciar Sistema o Cerrar Sesión),"Permite apagar, reiniciar o cerrar sesión del sistema.",power.svg
+Archivos y Directorios,"Comandos para crear, copiar, mover y eliminar archivos y carpetas.",folder.svg
+Archivos y Ficheros comprimidos,"Gestiona archivos comprimidos, como crear, extraer y listar contenido.",file-zip.svg
+Atributos especiales en ficheros (Usa + para colocar permisos y - para eliminar),"Cambia propiedades específicas de archivos, como permisos o restricciones.",files.svg
+CD-ROM,Gestiona la lectura y escritura de discos ópticos como CDs y DVDs.,disc.svg
+Encontrar archivos,"Busca archivos o carpetas por nombre, tipo o atributos.",search.svg
+Espacio de Disco,Muestra el uso del disco duro y analiza espacio libre y ocupado.,hdd.svg
+Establecer caracter y conversión de ficheros,Cambia codificaciones de texto y formatos de archivos.,file-binary.svg
+Formatear un sistema de ficheros,Prepara discos para almacenar datos al crear un sistema de archivos.,hdd-rack.svg
+Información del sistema,"Muestra datos del hardware, software y rendimiento del sistema.",info-circle.svg
+Manipulación de texto,"Comandos para procesar texto: buscar, reemplazar, dividir y ordenar.",file-earmark-text.svg
+Monitoreando y depurando,"Herramientas para observar procesos, recursos y solucionar errores.",terminal-split.svg
+Montando un sistema de ficheros,Conecta dispositivos de almacenamiento al sistema operativo.,file-earmark-check.svg
+Otros comandos útiles,Variedad de comandos prácticos para diferentes tareas generales.,terminal.svg
+"Paquetes Deb (Debian,  Ubuntu y derivados)",Comandos para instalar y manejar paquetes .deb en sistemas Debian.,boxes.svg
+"Paquetes RPM (Red Hat,  Fedora y similares)",Gestiona archivos .rpm en sistemas basados en Red Hat.,boxes.svg
+Permisos en Ficheros (Usa para colocar permisos y para eliminar),"Controla quién puede leer, escribir o ejecutar un archivo.",file-lock.svg
+Redes de Microsoft Windows (SAMBA),Herramientas para compartir archivos entre Linux y Windows.,microsoft.svg
+Salvas (Backup),Comandos para realizar copias de seguridad y restaurarlas.,hdd-network.svg
+Tablas IP (CORTAFUEGOS),Gestiona reglas de firewall para controlar el tráfico de red.,modem.svg
+Trabajo con la RED ( LAN y Wi-Fi),Configura y gestiona conexiones a redes locales e inalámbricas.,ethernet.svg
+Trabajo con la SWAP,Gestiona la memoria de intercambio para optimizar el rendimiento.,memory.svg
+Usuarios y Grupos,"Comandos para crear, modificar o eliminar cuentas de usuarios y grupos.",people.svg
+Ver el contenido de un fichero,Muestra el contenido de un archivo de texto directamente en la terminal.,file-richtext.svg

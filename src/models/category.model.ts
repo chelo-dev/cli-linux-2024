@@ -8,7 +8,7 @@ interface Category {
     uuid: string;
     name: string;
     description: string;
-    svg: Text;
+    svg: string;
     created_at: Date;
     updated_at: Date;
     deleted_at: Date | null;
@@ -16,14 +16,23 @@ interface Category {
 
 // Obtener todas las categorías
 export const getAllCategories = async (): Promise<Category[]> => {
+    const baseUrl = 'http://localhost:3000/';
     const [rows] = await pool.query(
         'SELECT uuid, name, description, svg FROM categories WHERE deleted_at IS NULL'
     );
-    return rows as Category[];
+
+    // Agregar la URL completa a cada categoría
+    const categories = (rows as Category[]).map((category) => ({
+        ...category,
+        svg: `${baseUrl}${category.svg}`, // Concatenar la URL base con el nombre del archivo svg
+    }));
+
+    return categories;
 };
 
+
 // Crear una nueva categoría
-export const createCategory = async (name: string, description: string, svg: Text): Promise<void> => {
+export const createCategory = async (name: string, description: string, svg: string): Promise<void> => {
     // const categories = await searchSimiliraty(name);
 
     // if (categories)
