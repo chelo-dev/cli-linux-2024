@@ -1,4 +1,4 @@
-import { uuidv4 } from '../utils/shared.util';
+import { uuidv4, capitalizeFirstLetter } from '../utils/shared.util';
 import csvParser from 'csv-parser';
 import pool from '../config/db';
 import fs from 'fs';
